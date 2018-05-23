@@ -23,6 +23,8 @@ import { Network } from "@ionic-native/network";
 import { GooglePlus } from "@ionic-native/google-plus";
 import { ApiProvider } from '../providers/api/api';
 
+import { PhotoViewer } from '@ionic-native/photo-viewer';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyDHcCO5ucIL6SLTmb5lgFx-MkZUj4U-jqI",
   authDomain: "servi-ecuador.firebaseapp.com",
@@ -55,7 +57,8 @@ export const firebaseConfig = {
     Geolocation,
     Network,
     GooglePlus,
-    ApiProvider
+    ApiProvider,
+    PhotoViewer
   ]
 })
 

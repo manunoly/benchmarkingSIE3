@@ -32,11 +32,24 @@
 
 
     <ion-list>
-      <button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">
-        <!-- <ion-icon item-start [name]="p.icon"></ion-icon> -->
-        <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
-        {{ p.title }}
-      </button>
+      <ion-item-group>
+        <button ion-item menuClose (click)="openPage({ component: 'InicioPage' })">
+          <ion-icon item-start name="home" [color]="isActive({ component: 'InicioPage' })"></ion-icon>
+          Inicio
+        </button>
+        <ion-item-divider color="light">Gráficas Generales</ion-item-divider>
+        <button ion-item menuClose *ngFor="let p of paginaGeneral" (click)="openPage(p)">
+          <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
+          {{ p.title }}
+        </button>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider color="light">Gráficas por Tipología</ion-item-divider>
+        <button ion-item menuClose *ngFor="let p of paginaTipologia" (click)="openPage(p)">
+          <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
+          {{ p.title }}
+        </button>
+      </ion-item-group>
     </ion-list>
   </ion-content>
 

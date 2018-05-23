@@ -26,15 +26,23 @@
     "@ionic-native/geolocation": "^4.7.0",
     "@ionic-native/google-plus": "^4.7.0",
     "@ionic-native/network": "^4.7.0",
+    "@ionic-native/photo-viewer": "^4.7.0",
     "@ionic-native/splash-screen": "4.6.0",
     "@ionic-native/status-bar": "4.6.0",
     "@ionic/storage": "2.1.3",
     "@types/node": "^10.0.6",
     "angularfire2": "^5.0.0-rc.6",
+    "com-sarriaroman-photoviewer": "^1.1.16",
+    "cordova-browser": "5.0.3",
+    "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-googleplus": "^5.3.0",
+    "cordova-plugin-ionic-keyboard": "^2.0.5",
+    "cordova-plugin-ionic-webview": "^1.2.1",
     "cordova-plugin-mauron85-background-geolocation": "^2.3.5",
     "cordova-plugin-network-information": "^2.0.1",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-whitelist": "^1.3.3",
     "firebase": "^4.12.1",
     "gaugeJS": "^1.3.6",
     "ionic-angular": "3.9.2",
@@ -58,7 +66,16 @@
       },
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "1:636867939821:ios:c3c064b33d9e0a26"
-      }
-    }
+      },
+      "com-sarriaroman-photoviewer": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-keyboard": {}
+    },
+    "platforms": [
+      "browser"
+    ]
   }
 }

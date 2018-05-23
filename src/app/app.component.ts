@@ -28,7 +28,9 @@ export class MyApp {
     stopOnTerminate: false // enable this to clear background location settings when the app terminates
   };
 
-  pages: Array<{ title: string; component: any; icon: any }>;
+  paginaGeneral: Array<{ title: string; component: any; icon: any }>;
+  paginaTipologia: Array<{ title: string; component: any; icon: any }>;
+
   usuario: any;
   loginURL = {
     title: "Iniciar / Registrar",
@@ -51,27 +53,49 @@ export class MyApp {
         this.auth.verificarPerfil();
       }
     });
-    this.pages = [
-      { title: "Inicio", component: "InicioPage", icon: "home" },
+    this.paginaGeneral = [
       {
         title: "Muestra Seleccionada",
-        component: "muestra-seleccionada",
+        component: "MuestraSeleccionadaPage",
         icon: "pie"
       },
       {
         title: "Benchmarking",
-        component: "benchmarking",
+        component: "BenchmarkingPage",
         icon: "barcode"
       },
       {
         title: "Area de Construcción",
-        component: "area-de-construccion",
+        component: "AreaConstruccionPage",
         icon: "construct"
       },
       {
         title: "Etiquetado Energético",
-        component: "etiquetado-energetico",
+        component: "EtiquetadoEnergeticoPage",
         icon: "flash"
+      }
+    ];
+
+    this.paginaTipologia = [
+      {
+        title: "Centros de Salud",
+        component: "CentrosSaludPage",
+        icon: "heart"
+      },
+      {
+        title: "Centros Educativos",
+        component: "CentrosEducativosPage",
+        icon: "school"
+      },
+      {
+        title: "Policia y Orden Público",
+        component: "PoliciaOrdenPublicoPage",
+        icon: "body"
+      },
+      {
+        title: "Oficinas",
+        component: "OficinasPage",
+        icon: "archive"
       }
     ];
   }

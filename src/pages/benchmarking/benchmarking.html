@@ -1,0 +1,27 @@
+<ion-navbar>
+    <ion-title primary style="text-align: center;">Benchmarking</ion-title>
+  </ion-navbar>
+
+  <ion-content no-padding>
+    <ion-fab right bottom>
+      <button ion-button [small]="!ancho ? 'true' : null" color="light" icon-only (click)="anterior()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <button ion-button [small]="!ancho ? 'true' : null" color="light" icon-only (click)="siguiente()">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+      <button ion-button [small]="!ancho ? 'true' : null" block color="light" icon-only (click)="recargar()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-fab hidden round color="primary">Siguiente</button>
+    </ion-fab>
+
+    <div *ngIf="!ancho">
+      <iframe style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"
+        src="https://plot.ly/~David199101/18.embed" frameborder="0"></iframe>
+    </div>
+    <div *ngIf="ancho">
+      <iframe style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"
+        src="https://plot.ly/~David199101/13.embed" frameborder="0"></iframe>
+    </div>
+  </ion-content>

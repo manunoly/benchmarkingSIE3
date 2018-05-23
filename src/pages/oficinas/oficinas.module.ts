@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { Grafica4Page } from './grafica4';
+import { OficinasPage } from './oficinas';
 
 @NgModule({
   declarations: [
-    Grafica4Page,
+    OficinasPage,
   ],
   imports: [
-    IonicPageModule.forChild(Grafica4Page),
+    IonicPageModule.forChild(OficinasPage),
   ],
 })
-export class Grafica4PageModule {}
+export class OficinasPageModule {}

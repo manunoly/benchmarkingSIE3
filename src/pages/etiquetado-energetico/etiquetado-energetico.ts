@@ -1,33 +1,26 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
-
-//npm install gaugeJS --save
-//npm install @types/node --save
-
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 var Gauge = require("gaugeJS");
-/**
- * Generated class for the Grafica4Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
-@IonicPage({
-  name: 'etiquetado-energetico',
-  segment: 'etiquetado-energetico'
-})
+@IonicPage()
 @Component({
-  selector: "page-grafica4",
-  templateUrl: "grafica4.html"
+  selector: 'page-etiquetado-energetico',
+  templateUrl: 'etiquetado-energetico.html',
 })
-export class Grafica4Page {
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+export class EtiquetadoEnergeticoPage {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private photoViewer: PhotoViewer) {}
 
   ionViewDidLoad() {
     setTimeout(() => {
       this.pintar();
     }, 2000);
   }
+
+  mostrarImagen(){
+    this.photoViewer.show('https://1.bp.blogspot.com/-biy6_8AtHAo/Wg27oCNsqDI/AAAAAAAA6mc/5i-RKAE4Fd8EioYrV2kyMRLD-s6-nVR9wCLcBGAs/s1600/1175368_1386343091651805_4522564668814642977_n.jpg', 'Tarifa', {share: false});
+  }
+
   pintar(){
     let opts = {
       lineWidth: 0.7, // The line thickness
@@ -59,4 +52,5 @@ export class Grafica4Page {
     gauge.animationSpeed = 80; // set animation speed (32 is default value)
     gauge.set(1250); // set actual value
   }
+
 }

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AuthProvider } from './../../providers/auth/auth';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { AuthProvider } from "./../../providers/auth/auth";
 
 /**
  * Generated class for the InicioPage page.
@@ -11,17 +11,18 @@ import { AuthProvider } from './../../providers/auth/auth';
 
 @IonicPage()
 @Component({
-  selector: 'page-inicio',
-  templateUrl: 'inicio.html',
+  selector: "page-inicio",
+  templateUrl: "inicio.html"
 })
 export class InicioPage {
-user : any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthProvider) {
-  }
+  user: any;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private auth: AuthProvider
+  ) {}
 
   ionViewDidLoad() {
-   this.user = this.auth.currentUserObservable;
-   console.log(this.user);
+    this.user = this.auth.currentUserObservable;
   }
-
 }

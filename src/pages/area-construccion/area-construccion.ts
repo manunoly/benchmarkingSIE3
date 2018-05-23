@@ -1,23 +1,14 @@
-import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { ApiProvider } from './../../providers/api/api';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the Grafica3Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
-@IonicPage({
-  name: 'area-de-construccion',
-  segment: 'area-de-construccion'
-})
+@IonicPage()
 @Component({
-  selector: "page-grafica3",
-  templateUrl: "grafica3.html"
+  selector: 'page-area-construccion',
+  templateUrl: 'area-construccion.html',
 })
-export class Grafica3Page {
+export class AreaConstruccionPage {
   ancho = false;
 
   constructor(public navCtrl: NavController, private api: ApiProvider) {}
@@ -29,15 +20,15 @@ export class Grafica3Page {
   }
 
   recargar(){
-      this.navCtrl.push('area-de-construccion');
+      this.navCtrl.push('AreaConstruccionPage');
   }
 
   siguiente(){
-    this.navCtrl.push('etiquetado-energetico');
+    this.navCtrl.push('EtiquetadoEnergeticoPage');
   }
 
   anterior(){
-    this.navCtrl.push('benchmarking');
+    this.navCtrl.push('BenchmarkingPage');
   }
 
   printStaircase(size: number) {
@@ -56,4 +47,5 @@ export class Grafica3Page {
       }
     } else console.log("Enter a valid number");
   }
+
 }
