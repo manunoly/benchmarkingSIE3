@@ -26,12 +26,12 @@ import { ApiProvider } from '../providers/api/api';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyDHcCO5ucIL6SLTmb5lgFx-MkZUj4U-jqI",
-  authDomain: "servi-ecuador.firebaseapp.com",
-  databaseURL: "https://servi-ecuador.firebaseio.com",
-  projectId: "servi-ecuador",
-  storageBucket: "servi-ecuador.appspot.com",
-  messagingSenderId: "636867939821"
+  apiKey: "AIzaSyDI--2lqro03jxLvYw67L-cl081psW8nTI",
+  authDomain: "sie3-ecuador.firebaseapp.com",
+  databaseURL: "https://sie3-ecuador.firebaseio.com",
+  projectId: "sie3-ecuador",
+  storageBucket: "sie3-ecuador.appspot.com",
+  messagingSenderId: "375033599626"
 };
 
 @NgModule({

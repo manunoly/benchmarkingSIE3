@@ -1,3 +1,8 @@
 page-etiquetado-energetico {
-
+  .desabilitado {
+    position: absolute;
+    background-color: #dddddd;
+    opacity: 0.5;
+    z-index: 1;
+  }
 }

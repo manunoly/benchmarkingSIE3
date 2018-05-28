@@ -1,27 +1,81 @@
 <ion-navbar>
-    <ion-title>Etiquetado Energético</ion-title>
-  </ion-navbar>
+  <ion-title>Etiquetado Energético</ion-title>
+</ion-navbar>
 
 
-<ion-content padding>
-    <ion-card text-center disable>
-        <ion-card-header>
-          Seleccione su Tarifa
-        </ion-card-header>
-        <ion-card-content>
-          <ion-row>
-            <ion-col><button ion-button (click)="mostrarImagen()"></button></ion-col>
-            <ion-col><button ion-button (click)="mostrarImagen()"></button></ion-col>
-            <ion-col><button ion-button (click)="mostrarImagen()"></button></ion-col>
-          </ion-row>
-        </ion-card-content>
-      </ion-card>
+<ion-content text-center>
+  <ion-card radio-group [(ngModel)]="tarifa">
+    <ion-card-header>
+      Seleccione su tarifa eléctrica
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <!-- <button ion-button (click)="mostrarImagen()"></button> -->
+          <ion-label>
+            <img src="assets/imgs/planilla-luz-guayaquil.jpg">
+          </ion-label>
+          <ion-radio value="cord"></ion-radio>
+          <p>Horaria</p>
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <img src="assets/imgs/planilla-luz-guayaquil.jpg">
+          </ion-label>
+          <ion-radio value="cord1"></ion-radio>
+          <p>Bajo demanda</p>
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <img src="assets/imgs/planilla-luz-guayaquil.jpg">
+          </ion-label>
+          <ion-radio value="cord2"></ion-radio>
+          <p>Normal</p>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 
-  <ion-card text-center disable>
+  <ion-card>
+    <ion-card-header>Entrada de datos</ion-card-header>
+    <ion-row no-padding offset-md-2 col-md-8>
+      <ion-col col-6 no-padding>
+        <ion-item>
+          <ion-label floating>Consumo Mensual</ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6 no-padding>
+        <ion-item>
+          <ion-label floating>Área en m2</ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row offset-md-2 col-md-8>
+      <ion-col>
+        <ion-item>
+          <ion-label floating>Selecione su sector</ion-label>
+          <ion-select [(ngModel)]="sector" interface="popover">
+            <ion-option value="edu">Educación</ion-option>
+            <ion-option value="salud">Salud</ion-option>
+            <ion-option value="seg">Policia y orden público</ion-option>
+            <ion-option value="ofi">Oficinas</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-card>
     <ion-card-header>
       Simulación de rangos
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content [hidden]="simulado">
+      <ion-spinner name="dots"></ion-spinner>
+      <p>Esperando Valores para Simular</p>
+    </ion-card-content>
+    <ion-card-content disable>
       <canvas id="gauge-a"></canvas>
     </ion-card-content>
   </ion-card>
