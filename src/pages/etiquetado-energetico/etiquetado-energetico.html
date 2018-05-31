@@ -57,14 +57,12 @@
         <ion-item>
           <ion-label floating>Selecione su sector</ion-label>
           <ion-select [(ngModel)]="sector" interface="popover">
-            <ion-option value="edu">Educación</ion-option>
-            <ion-option value="salud">Salud</ion-option>
-            <ion-option value="seg">Policia y orden público</ion-option>
-            <ion-option value="ofi">Oficinas</ion-option>
+            <ion-option *ngFor="let item of tipologias">{{item.tipo}}</ion-option>
           </ion-select>
         </ion-item>
       </ion-col>
     </ion-row>
+    {{sector}}
   </ion-card>
 
   <ion-card>

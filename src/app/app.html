@@ -17,11 +17,11 @@
     <ng-template #usuarioPanel>
       <ion-list>
         <ion-avatar class="profilepicsize">
-          <img style="border-radius: 50%;" [src]="(usuario | async)?.photoURL ">
+          <img style="border-radius: 50%;" [src]="photoURL">
         </ion-avatar>
         <button ion-item menuClose>
           <ion-icon item-start [name]="perfil.icon" [color]="isActive(perfil)"></ion-icon>
-          {{(usuario | async)?.displayName}}
+          {{displayName}}
         </button>
         <button ion-item title="Salir" clear menuClose (click)="logout()">
           Salir

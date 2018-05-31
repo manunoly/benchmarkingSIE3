@@ -17,7 +17,6 @@ import {
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
   rootPage: any = "InicioPage";
 
   backGeoConfig: BackgroundGeolocationConfig = {
@@ -32,6 +31,8 @@ export class MyApp {
   paginaTipologia: Array<{ title: string; component: any; icon: any }>;
 
   usuario: any;
+  displayName = "Visitante";
+  photoURL = "assets/icon/favicon.ico";
   loginURL = {
     title: "Iniciar / Registrar",
     component: "LoginPage",
@@ -47,12 +48,17 @@ export class MyApp {
     private auth: AuthProvider
   ) {
     this.initializeApp();
-    this.usuario = this.auth.currentUserObservable;
-    this.usuario.subscribe(userD => {
-      if (userD) {
-        this.auth.verificarPerfil();
+    this.usuario = this.auth.currentFirebaseAuthObservable;
+    this.auth.currentUserObservable.subscribe(userFirestoneData => {
+      if (userFirestoneData) {
+        this.displayName = userFirestoneData.displayName;
+        this.photoURL = userFirestoneData.photoURL;
+      } else {
+        this.displayName = "Visitante";
+        this.photoURL = "assets/icon/favicon.ico";
       }
     });
+
     this.paginaGeneral = [
       {
         title: "Muestra Seleccionada",
@@ -125,8 +131,9 @@ export class MyApp {
       this.auth
         .googleLogin()
         .then(resp => {
-          console.log("OK");
-          console.log(resp);
+          /**
+           * TODO: mostrar mensaje bienvenida
+           */
         })
         .catch(error => {
           console.log("error");

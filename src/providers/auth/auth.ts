@@ -5,24 +5,27 @@ import { AngularFireAuth } from "angularfire2/auth";
 import * as firebase from "firebase";
 
 import { Observable } from "rxjs/Observable";
+import { switchMap, first } from "rxjs/operators";
+import { Subject } from "rxjs/Subject";
 
 import { GooglePlus } from "@ionic-native/google-plus";
-import { Platform } from "ionic-angular";
+import { Platform, ToastController } from "ionic-angular";
 
-import {
-  AngularFirestore,
-  AngularFirestoreCollection
-} from "angularfire2/firestore";
+import { AngularFirestore } from "angularfire2/firestore";
+import { errorHandler } from "@angular/platform-browser";
 
 @Injectable()
 export class AuthProvider {
   authState: any = null;
   isCordova: boolean;
+  user = new Subject<any>();
+
   constructor(
     private afAuth: AngularFireAuth,
     private gplus: GooglePlus,
     private platform: Platform,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    public toastCtrl: ToastController
   ) {
     if (this.platform.is("cordova")) {
       this.isCordova = true;
@@ -30,9 +33,42 @@ export class AuthProvider {
       this.isCordova = false;
     }
 
-    this.afAuth.authState.subscribe(auth => {
-      this.authState = auth;
-    });
+    this.afAuth.authState.subscribe(
+      auth => {
+        if (auth) {
+          this.docExists("usuario/" + auth.uid)
+            .then(userD => {
+              this.authState = {};
+              if (userD) {
+                this.authState["uid"] = auth.uid;
+                this.authState["displayName"] = userD["displayName"];
+                this.authState["phoneNumber"] = userD["phoneNumber"];
+                this.authState["photoURL"] = userD["photoURL"];
+                this.authState["email"] = userD["email"];
+                this.authState["rol"] = userD.hasOwnProperty("rol")
+                  ? userD["rol"]
+                  : ["cliente"];
+                this.user.next(this.authState);
+              } else {
+                this.authState["displayName"] = auth["displayName"];
+                this.authState["phoneNumber"] = auth["phoneNumber"];
+                this.authState["photoURL"] = auth["photoURL"];
+                this.authState["email"] = auth["email"];
+                this.authState["rol"] = ["cliente"];
+                this.user.next(this.authState);
+                this.afs.doc<any>("usuario/" + auth.uid).set(this.authState);
+              }
+            })
+            .catch(error => this.handleError(error));
+        } else {
+          this.authState = null;
+          this.user.next(this.authState);
+        }
+      },
+      error => {
+        this.handleError(error);
+      }
+    );
   }
 
   verificarPerfil() {
@@ -42,11 +78,9 @@ export class AuthProvider {
         .valueChanges()
         .subscribe(datos => {
           if (typeof datos == undefined || datos == null) {
-            /**
-             * Actualizar datos en la BD para tener datos basicos
-             */
+            // Actualizar datos en la BD para tener datos basicos
             this.afs
-              .doc<any>("usuarios/" + this.currentUserId)
+              .doc<any>("usuario/" + this.currentUserId)
               .set({
                 actulizado: false,
                 phoneNumber: this.authState.phoneNumber,
@@ -75,6 +109,14 @@ export class AuthProvider {
     }
   }
 
+  docExists(path: string) {
+    return this.afs
+      .doc(path)
+      .valueChanges()
+      .pipe(first())
+      .toPromise();
+  }
+
   // Returns true if user is logged in
   get authenticated(): boolean {
     return this.authState !== null;
@@ -86,7 +128,12 @@ export class AuthProvider {
   }
 
   // Returns
-  get currentUserObservable(): any {
+  get currentUserObservable(): Observable<any> {
+    return this.user.asObservable();
+  }
+
+  // Returns
+  get currentFirebaseAuthObservable(): any {
     return this.afAuth.authState;
   }
 
@@ -103,11 +150,11 @@ export class AuthProvider {
   // Returns current user display name or Guest
   get currentUserDisplayName(): string {
     if (!this.authState) {
-      return "Guest";
+      return "Visitante";
     } else if (this.currentUserAnonymous) {
-      return "Anonymous";
+      return "Anonimo";
     } else {
-      return this.authState["displayName"] || "User without a Name";
+      return this.authState["displayName"] || "Usuario";
     }
   }
 
@@ -226,5 +273,27 @@ export class AuthProvider {
     };
 
     //this.db.object(path).update(data).catch(error => console.log(error));
+  }
+
+  private handleError(error: Error) {
+    console.error(error);
+    this.showMessage(error.message);
+  }
+
+  showMessage(
+    msg = "",
+    duration = 3000,
+    closeButton = false,
+    buttonText = "Cerrar",
+    position = "bottom"
+  ) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: duration,
+      position: position,
+      showCloseButton: closeButton,
+      closeButtonText: buttonText
+    });
+    toast.present();
   }
 }

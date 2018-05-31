@@ -12,7 +12,22 @@ export class EtiquetadoEnergeticoPage {
   simulado = false;
   tarifa: any;
   sector: any;
-
+  tipologias = [
+    {
+        "id": 1,
+        "tipo": "Policia",
+        "rango_minimo": 10,
+        "rango_medio": 100,
+        "rango_maximo": 1000
+    },
+    {
+        "id": 2,
+        "tipo": "Oficinas",
+        "rango_minimo": 10,
+        "rango_medio": 100,
+        "rango_maximo": 1000
+    }
+]
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -20,6 +35,9 @@ export class EtiquetadoEnergeticoPage {
   ) {}
 
   ionViewDidLoad() {
+    this.tipologias.forEach(element => {
+      console.log(element);
+    });
     this.pintar();
 
     setTimeout(() => {
