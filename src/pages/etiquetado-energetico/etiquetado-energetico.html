@@ -2,78 +2,97 @@
   <ion-title>Etiquetado Energético</ion-title>
 </ion-navbar>
 
-
 <ion-content text-center>
   <ion-card radio-group [(ngModel)]="tarifa">
     <ion-card-header>
-      Seleccione su tarifa eléctrica
+      Seleccione tipo de tarifa
     </ion-card-header>
     <ion-card-content>
       <ion-row>
         <ion-col>
           <!-- <button ion-button (click)="mostrarImagen()"></button> -->
           <ion-label>
-            <img src="assets/imgs/planilla-luz-guayaquil.jpg">
+            <img src="assets/imgs/sindemanda.jpg">
           </ion-label>
-          <ion-radio value="cord"></ion-radio>
-          <p>Horaria</p>
+          <ion-radio value="Sin Demanda"></ion-radio>
+          <p>Sin Demanda</p>
         </ion-col>
         <ion-col>
           <ion-label>
-            <img src="assets/imgs/planilla-luz-guayaquil.jpg">
+            <img src="assets/imgs/condemanda.jpg">
           </ion-label>
-          <ion-radio value="cord1"></ion-radio>
-          <p>Bajo demanda</p>
+          <ion-radio value="Demanda"></ion-radio>
+          <p>Con Demanda</p>
         </ion-col>
         <ion-col>
           <ion-label>
-            <img src="assets/imgs/planilla-luz-guayaquil.jpg">
+            <img src="assets/imgs/condemandahoraria.jpg">
           </ion-label>
-          <ion-radio value="cord2"></ion-radio>
-          <p>Normal</p>
+          <ion-radio value="horaria"></ion-radio>
+          <p>Con Demanda Horaria</p>
         </ion-col>
       </ion-row>
     </ion-card-content>
   </ion-card>
 
   <ion-card>
-    <ion-card-header>Entrada de datos</ion-card-header>
-    <ion-row no-padding offset-md-2 col-md-8>
-      <ion-col col-6 no-padding>
+    <ion-card-header>Ingrese los Datos Requeridos</ion-card-header>
+    <ion-card-content>
+      <ng-container *ngIf="tarifa != 'horaria'; else horariaT">
+        <h3>Consumo Energía Mensual</h3>
         <ion-item>
-          <ion-label floating>Consumo Mensual</ion-label>
-          <ion-input type="number"></ion-input>
+          <ion-label>Energía Activa [Kwh]</ion-label>
+          <ion-input [(ngModel)]="energia" type="number"></ion-input>
         </ion-item>
-      </ion-col>
-      <ion-col col-6 no-padding>
+      </ng-container>
+      <ng-template #horariaT>
+        <h3>Consumo Energía Mensual</h3>
+        <h4>Energía Activa</h4>
         <ion-item>
-          <ion-label floating>Área en m2</ion-label>
-          <ion-input type="number"></ion-input>
+          <ion-label>08h-18h L-V [Kwh]</ion-label>
+          <ion-input [(ngModel)]="energia" type="number"></ion-input>
         </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row offset-md-2 col-md-8>
-      <ion-col>
         <ion-item>
-          <ion-label floating>Selecione su sector</ion-label>
-          <ion-select [(ngModel)]="sector" interface="popover">
-            <ion-option *ngFor="let item of tipologias">{{item.tipo}}</ion-option>
-          </ion-select>
+          <ion-label>18h-22h L-V [Kwh]</ion-label>
+          <ion-input [(ngModel)]="energia1" type="number"></ion-input>
         </ion-item>
-      </ion-col>
-    </ion-row>
-    {{sector}}
+        <ion-item>
+          <ion-label>22h-08h L-V [Kwh]</ion-label>
+          <ion-input [(ngModel)]="energia2" type="number"></ion-input>
+        </ion-item>
+      </ng-template>
+      <br>
+      <h3>Características de la edificación</h3>
+      <ion-item>
+        <ion-label>Área de construcción [m2]</ion-label>
+        <ion-input [(ngModel)]="area" type="number"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-label>Selecionar tipología</ion-label>
+        <ion-select [(ngModel)]="sector" interface="popover">
+          <ion-option *ngFor="let item of tipologias">{{item.tipo}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <div offset-md-4 col-md-4 offset-2 col-8>
+        <button ion-button block round color="primary" (click)=simular()>
+          Simular
+        </button>
+      </div>
+    </ion-card-content>
   </ion-card>
 
   <ion-card>
     <ion-card-header>
-      Simulación de rangos
+      Rendimiento energético de su edificación
     </ion-card-header>
     <ion-card-content [hidden]="simulado">
       <ion-spinner name="dots"></ion-spinner>
       <p>Esperando Valores para Simular</p>
     </ion-card-content>
     <ion-card-content disable>
+      <h3 *ngIf="datosSimulado.tipo">Tipología: {{datosSimulado.tipo}}</h3>
+
       <canvas id="gauge-a"></canvas>
     </ion-card-content>
   </ion-card>

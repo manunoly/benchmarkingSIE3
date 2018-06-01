@@ -12,7 +12,6 @@ import { GooglePlus } from "@ionic-native/google-plus";
 import { Platform, ToastController } from "ionic-angular";
 
 import { AngularFirestore } from "angularfire2/firestore";
-import { errorHandler } from "@angular/platform-browser";
 
 @Injectable()
 export class AuthProvider {
