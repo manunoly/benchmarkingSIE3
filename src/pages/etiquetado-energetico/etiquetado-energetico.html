@@ -74,26 +74,13 @@
           <ion-option *ngFor="let item of tipologias">{{item.tipo}}</ion-option>
         </ion-select>
       </ion-item>
+      {{sector}}
       <div offset-md-4 col-md-4 offset-2 col-8>
+        <ion-spinner name="dots"></ion-spinner>
         <button ion-button block round color="primary" (click)=simular()>
           Simular
         </button>
       </div>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header>
-      Rendimiento energético de su edificación
-    </ion-card-header>
-    <ion-card-content [hidden]="simulado">
-      <ion-spinner name="dots"></ion-spinner>
-      <p>Esperando Valores para Simular</p>
-    </ion-card-content>
-    <ion-card-content disable>
-      <h3 *ngIf="datosSimulado.tipo">Tipología: {{datosSimulado.tipo}}</h3>
-
-      <canvas id="gauge-a"></canvas>
     </ion-card-content>
   </ion-card>
 </ion-content>

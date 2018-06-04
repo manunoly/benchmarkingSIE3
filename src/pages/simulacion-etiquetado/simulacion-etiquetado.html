@@ -1,0 +1,29 @@
+<!--
+  Generated template for the SimulacionEtiquetadoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>Resultados de la Simulación</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content text-center>
+  <ion-card>
+    <ion-card-header>
+      Rendimiento energético de su edificación
+    </ion-card-header>
+    <ion-card-content disable>
+      <h3 *ngIf="simulado">Tipología: {{simulado.tipo}}</h3>
+
+      <canvas id="gauge-a"></canvas>
+    </ion-card-content>
+    <h3 *ngIf="simulado">{{simulado.mensaje}}</h3>
+
+  </ion-card>
+  <button ion-button (click)="cerrar()">Volver</button>
+</ion-content>
