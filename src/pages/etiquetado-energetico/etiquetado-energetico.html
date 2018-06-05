@@ -40,14 +40,17 @@
     <ion-card-content>
       <ng-container *ngIf="tarifa != 'horaria'; else horariaT">
         <h3>Consumo Energía Mensual</h3>
-        <ion-item>
-          <ion-label>Energía Activa [Kwh]</ion-label>
-          <ion-input [(ngModel)]="energia" type="number"></ion-input>
-        </ion-item>
+        <ion-list>
+          <ion-item>
+            <ion-label>Energía Activa [Kwh]</ion-label>
+            <ion-input [(ngModel)]="energia" type="number"></ion-input>
+          </ion-item>
+        </ion-list>
       </ng-container>
       <ng-template #horariaT>
         <h3>Consumo Energía Mensual</h3>
         <h4>Energía Activa</h4>
+        <ion-list>
         <ion-item>
           <ion-label>08h-18h L-V [Kwh]</ion-label>
           <ion-input [(ngModel)]="energia" type="number"></ion-input>
@@ -60,9 +63,11 @@
           <ion-label>22h-08h L-V [Kwh]</ion-label>
           <ion-input [(ngModel)]="energia2" type="number"></ion-input>
         </ion-item>
+      </ion-list>
       </ng-template>
       <br>
       <h3>Características de la edificación</h3>
+      <ion-list>
       <ion-item>
         <ion-label>Área de construcción [m2]</ion-label>
         <ion-input [(ngModel)]="area" type="number"></ion-input>
@@ -74,6 +79,8 @@
           <ion-option *ngFor="let item of tipologias">{{item.tipo}}</ion-option>
         </ion-select>
       </ion-item>
+    </ion-list>
+      
       {{sector}}
       <div offset-md-4 col-md-4 offset-2 col-8>
         <ion-spinner name="dots"></ion-spinner>

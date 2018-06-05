@@ -181,7 +181,8 @@ export class EtiquetadoEnergeticoPage {
       duration: duration,
       position: position,
       showCloseButton: closeButton,
-      closeButtonText: buttonText
+      closeButtonText: buttonText,
+      cssClass: "centrado"
     });
     toast.present();
   }
