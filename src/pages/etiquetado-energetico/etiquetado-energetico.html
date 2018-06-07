@@ -11,21 +11,21 @@
       <ion-row>
         <ion-col>
           <!-- <button ion-button (click)="mostrarImagen()"></button> -->
-          <ion-label>
+          <ion-label (click)="mostrarImagen('assets/imgs/sindemanda.jpg')">
             <img src="assets/imgs/sindemanda.jpg">
           </ion-label>
           <ion-radio value="Sin Demanda"></ion-radio>
           <p>Sin Demanda</p>
         </ion-col>
         <ion-col>
-          <ion-label>
+          <ion-label (click)="mostrarImagen('assets/imgs/condemanda.jpg')">
             <img src="assets/imgs/condemanda.jpg">
           </ion-label>
           <ion-radio value="Demanda"></ion-radio>
           <p>Con Demanda</p>
         </ion-col>
         <ion-col>
-          <ion-label>
+          <ion-label (click)="mostrarImagen('assets/imgs/condemandahoraria.jpg')">
             <img src="assets/imgs/condemandahoraria.jpg">
           </ion-label>
           <ion-radio value="horaria"></ion-radio>
@@ -80,7 +80,7 @@
         </ion-select>
       </ion-item>
     </ion-list>
-      
+
       {{sector}}
       <div offset-md-4 col-md-4 offset-2 col-8>
         <ion-spinner name="dots"></ion-spinner>

@@ -5,10 +5,11 @@ import {
   NavController,
   NavParams,
   ToastController,
-  ModalController
+  ModalController,
+  Platform
 } from "ionic-angular";
 import { PhotoViewer } from "@ionic-native/photo-viewer";
-// var Gauge = require("gaugeJS");
+import { MostrarImagenPage } from "./../mostrar-imagen/mostrar-imagen";
 
 @IonicPage()
 @Component({
@@ -90,7 +91,8 @@ export class EtiquetadoEnergeticoPage {
     public navParams: NavParams,
     private photoViewer: PhotoViewer,
     public toastCtrl: ToastController,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public plt: Platform
   ) {}
 
   ionViewDidLoad() {}
@@ -127,46 +129,54 @@ export class EtiquetadoEnergeticoPage {
         this.datosSimulado = element;
       }
     });
-    suma = suma * 12 / this.area;
+    suma = (suma * 12) / this.area;
     this.datosSimulado["resultado"] = parseInt(suma);
     if (
       this.datosSimulado["resultado"] > this.datosSimulado["rango_inicio"] &&
       this.datosSimulado["resultado"] < this.datosSimulado["rango_minimo"]
-    )
-      this.datosSimulado["mensaje"] = "esta OK";
-    else if (
+    ) {
+      this.datosSimulado["mensajeP"] = "¡Felicitaciones!";
+      this.datosSimulado["mensaje"] =
+        "Su edificación es parte del grupo de BAJO consumo energético.";
+    } else if (
       this.datosSimulado["resultado"] > this.datosSimulado["rango_minimo"] &&
       this.datosSimulado["resultado"] < this.datosSimulado["rango_medio"]
-    )
-      this.datosSimulado["mensaje"] = "esta en la zona media";
-    else if (
+    ) {
+      this.datosSimulado["mensajeP"] = "¡Bien!";
+      this.datosSimulado["mensaje"] =
+        "Su edificación presenta un consumo energetico esperado de acuerdo a su tipología.";
+    } else if (
       this.datosSimulado["resultado"] > this.datosSimulado["rango_medio"] &&
       this.datosSimulado["resultado"] < this.datosSimulado["rango_maximo"]
-    )
-      this.datosSimulado["mensaje"] = "esta consumiendo mucho";
-    else if (
+    ) {
+      this.datosSimulado["mensajeP"] = "¡Advertencia!";
+      this.datosSimulado["mensaje"] =
+        " Su edificación es parte del grupo de ALTO consumo energético.";
+    } else if (
       this.datosSimulado["resultado"] > this.datosSimulado["rango_maximo"] ||
       this.datosSimulado["resultado"] < this.datosSimulado["rango_inicio"]
-    )
-      this.datosSimulado["mensaje"] = "fuera de rango verificar";
-
-    console.log(this.datosSimulado);
+    ) {
+      this.datosSimulado["mensajeP"] = "Fuera de Rango";
+      this.datosSimulado["mensaje"] =
+        "Verificar los datos ingresado, no se encuentra en ningún rango.";
+    }
 
     let profileModal = this.modalCtrl.create(SimulacionEtiquetadoPage, {
       datos: this.datosSimulado
     });
-    profileModal.onDidDismiss(data => {
-      console.log(data);
-    });
+    profileModal.onDidDismiss(_ => {});
     profileModal.present();
   }
 
-  mostrarImagen() {
-    this.photoViewer.show(
-      "https://1.bp.blogspot.com/-biy6_8AtHAo/Wg27oCNsqDI/AAAAAAAA6mc/5i-RKAE4Fd8EioYrV2kyMRLD-s6-nVR9wCLcBGAs/s1600/1175368_1386343091651805_4522564668814642977_n.jpg",
-      "Tarifa",
-      { share: false }
-    );
+  mostrarImagen(img = null) {
+    if (this.plt.is("cordova")) {
+      this.photoViewer.show(img, "Tarifa", { share: false });
+    } else {
+      let profileModal = this.modalCtrl.create(MostrarImagenPage, {
+        url: img
+      });
+      profileModal.present();
+    }
   }
 
   showMessage(

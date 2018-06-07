@@ -61,6 +61,10 @@ export class MyApp {
 
     this.paginaGeneral = [
       {
+        title: "Taller Buenas Prácticas",
+        component: "TallerBuenasPracticasPage",
+        icon: "school"
+      },{
         title: "Muestra Seleccionada",
         component: "MuestraSeleccionadaPage",
         icon: "pie"

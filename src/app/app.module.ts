@@ -25,6 +25,7 @@ import { ApiProvider } from '../providers/api/api';
 
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { SimulacionEtiquetadoPage } from "../pages/simulacion-etiquetado/simulacion-etiquetado";
+import { MostrarImagenPage } from './../pages/mostrar-imagen/mostrar-imagen';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDI--2lqro03jxLvYw67L-cl081psW8nTI",
@@ -36,7 +37,7 @@ export const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [MyApp,SimulacionEtiquetadoPage],
+  declarations: [MyApp,SimulacionEtiquetadoPage,MostrarImagenPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
@@ -47,7 +48,7 @@ export const firebaseConfig = {
     HttpClientModule
   ],
   bootstrap: [IonicApp],
-  entryComponents: [MyApp,SimulacionEtiquetadoPage],
+  entryComponents: [MyApp,SimulacionEtiquetadoPage, MostrarImagenPage],
   providers: [
     StatusBar,
     SplashScreen,
