@@ -1,15 +1,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Inicio</ion-title>
+    <ion-title text-center>Bienvenidos</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
-<ion-content padding>
-
-  Pagina de Inicio
- <br>
-  {{(user | async)| json}}
+<ion-content padding text-center>
+  <ion-card offset-md-2 col-md-8>
+    <ion-card-header>Te invitamos a nuestro taller
+      <br>Buenas Prácticas de Eficiencia Energética</ion-card-header>
+    <ion-card-content offset-md-2 col-md-8>
+      <img src="assets/imgs/taller.jpg">
+    </ion-card-content>
+  </ion-card>
 </ion-content>

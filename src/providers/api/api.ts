@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Platform } from "ionic-angular";
-
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Observable } from 'rxjs';
 /*
   Generated class for the ApiProvider provider.
 
@@ -12,7 +13,7 @@ import { Platform } from "ionic-angular";
 export class ApiProvider {
   ancho: boolean = false;
 
-  constructor(public http: HttpClient, private plt: Platform) {
+  constructor(public http: HttpClient, private plt: Platform, private afs: AngularFirestore) {
   }
 
   get tamanno() {
@@ -22,5 +23,10 @@ export class ApiProvider {
   establecerTamanno() {
     if (this.plt.isLandscape()) this.ancho = true;
     else this.ancho = false;
+  }
+
+  inscribirTaller(usuario){
+    let inscripcion = this.afs.collection<any>('inscripcion');
+    return inscripcion.add(usuario);
   }
 }

@@ -1,6 +1,12 @@
-import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { Component, NgZone } from "@angular/core";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  ToastController
+} from "ionic-angular";
 import { Validators, FormBuilder, FormGroup } from "@angular/forms";
+import { ApiProvider } from "./../../providers/api/api";
 
 @IonicPage()
 @Component({
@@ -9,11 +15,16 @@ import { Validators, FormBuilder, FormGroup } from "@angular/forms";
 })
 export class TallerBuenasPracticasPage {
   inscripcion: FormGroup;
+  private captchaPassed: boolean = false;
+  private captchaResponse: string;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private zone: NgZone,
+    private api: ApiProvider,
+    public toast: ToastController
   ) {
     this.inscripcion = this.formBuilder.group({
       nombre: [""],
@@ -25,6 +36,30 @@ export class TallerBuenasPracticasPage {
   ionViewDidLoad() {}
 
   submitForm() {
-    console.log(this.inscripcion);
+    /*     let data = {
+      captchaResponse: this.captchaResponse
+    }; */
+    console.log(this.captchaResponse);
+    console.log(this.inscripcion.value);
+
+    this.api
+      .inscribirTaller(this.inscripcion.value)
+      .then(result => {
+        let toast = this.toast.create({
+          message: "Se ha inscrito exitosamente en el taller",
+          duration: 5000,
+          cssClass: "centrado"
+        });
+        toast.present();
+        this.inscripcion.reset();
+      })
+      .catch(error => {});
+  }
+
+  captchaResolved(response: string): void {
+    this.zone.run(() => {
+      this.captchaPassed = true;
+      this.captchaResponse = response;
+    });
   }
 }
