@@ -25,4 +25,12 @@ export class InicioPage {
   ionViewDidLoad() {
     this.user = this.auth.currentUserObservable;
   }
+
+  goToTaller(){
+    this.navCtrl.push("TallerBuenasPracticasPage");
+  }
+  goToHerramienta(){
+    this.navCtrl.push("EtiquetadoEnergeticoPage");
+  }
+
 }

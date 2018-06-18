@@ -18,6 +18,7 @@ import {
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = "InicioPage";
+  showbutton = true;
 
   backGeoConfig: BackgroundGeolocationConfig = {
     desiredAccuracy: 10,
@@ -48,23 +49,14 @@ export class MyApp {
     private auth: AuthProvider
   ) {
     this.initializeApp();
-    this.usuario = this.auth.currentFirebaseAuthObservable;
-    this.auth.currentUserObservable.subscribe(userFirestoneData => {
-      if (userFirestoneData) {
-        this.displayName = userFirestoneData.displayName;
-        this.photoURL = userFirestoneData.photoURL;
-      } else {
-        this.displayName = "Visitante";
-        this.photoURL = "assets/icon/favicon.ico";
-      }
-    });
 
     this.paginaGeneral = [
       {
         title: "Taller Buenas Prácticas",
         component: "TallerBuenasPracticasPage",
         icon: "school"
-      },{
+      },
+      {
         title: "Muestra Seleccionada",
         component: "MuestraSeleccionadaPage",
         icon: "pie"
@@ -127,7 +119,28 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.backGroundGeolocation();
+      this.iniciarConfiguracion();
     });
+  }
+
+  iniciarConfiguracion() {
+    this.usuario = this.auth.currentFirebaseAuthObservable;
+    this.auth.currentUserObservable.subscribe(userFirestoneData => {
+      if (userFirestoneData) {
+        this.displayName = userFirestoneData.displayName;
+        this.photoURL = userFirestoneData.photoURL;
+      } else {
+        this.displayName = "Visitante";
+        this.photoURL = "assets/icon/favicon.ico";
+      }
+    });
+    this.showbuttonD();
+  }
+
+  showbuttonD() {
+    if (this.platform.width() >= 768) {
+      this.showbutton = false;
+    }
   }
 
   loginRegister(page) {

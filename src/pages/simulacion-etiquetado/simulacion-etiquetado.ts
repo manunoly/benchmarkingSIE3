@@ -14,9 +14,7 @@ export class SimulacionEtiquetadoPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SimulacionEtiquetadoPage');
     this.simulado = this.navParams.get("datos");
-    console.log(this.simulado);
     this.pintar();
   }
 
@@ -75,6 +73,10 @@ export class SimulacionEtiquetadoPage {
 
   cerrar(){
     this.navCtrl.pop();
+  }
+
+  goToTaller(){
+    this.navCtrl.push("TallerBuenasPracticasPage");
   }
 
 }

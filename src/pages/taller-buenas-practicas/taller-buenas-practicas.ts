@@ -30,7 +30,9 @@ export class TallerBuenasPracticasPage {
       nombre: [""],
       correo: ["", (Validators.required, Validators.email)],
       telefono: ["", Validators.required],
-      institucion: [""]
+      institucion: [""],
+      comentario: [""]
+
     });
   }
   ionViewDidLoad() {}
@@ -39,9 +41,6 @@ export class TallerBuenasPracticasPage {
     /*     let data = {
       captchaResponse: this.captchaResponse
     }; */
-    console.log(this.captchaResponse);
-    console.log(this.inscripcion.value);
-
     this.api
       .inscribirTaller(this.inscripcion.value)
       .then(result => {
