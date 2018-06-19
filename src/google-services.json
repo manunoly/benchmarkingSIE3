@@ -1,27 +1,39 @@
 {
   "project_info": {
-    "project_number": "636867939821",
-    "firebase_url": "https://servi-ecuador.firebaseio.com",
-    "project_id": "servi-ecuador",
-    "storage_bucket": "servi-ecuador.appspot.com"
+    "project_number": "375033599626",
+    "firebase_url": "https://sie3-ecuador.firebaseio.com",
+    "project_id": "sie3-ecuador",
+    "storage_bucket": "sie3-ecuador.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:636867939821:android:c3c064b33d9e0a26",
+        "mobilesdk_app_id": "1:375033599626:android:84c3b27186c2cb2a",
         "android_client_info": {
-          "package_name": "servi.transporte.manunoly"
+          "package_name": "sie.ecuador.manunoly"
         }
       },
       "oauth_client": [
         {
-          "client_id": "636867939821-tpop66gk6epn4q7368inedvhk7f92cd7.apps.googleusercontent.com",
+          "client_id": "375033599626-u0ustsjnrec4l45o5r1d1vfi83mgbnbf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sie.ecuador.manunoly",
+            "certificate_hash": "de57830a4c9f06b6f8b1a4dc2a62810773e1e19d"
+          }
+        },
+        {
+          "client_id": "375033599626-4qdvnmf04rn5sjl034dcs8htov695val.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "375033599626-4qdvnmf04rn5sjl034dcs8htov695val.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyChdc1T1ovXjXJPLHopmTSEpmh7Mbsc1DI"
+          "current_key": "AIzaSyARrKAnEiV73PWiql0339kXOTtL3cqR1kg"
         }
       ],
       "services": {
@@ -29,8 +41,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375033599626-4qdvnmf04rn5sjl034dcs8htov695val.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

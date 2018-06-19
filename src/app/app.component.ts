@@ -40,7 +40,8 @@ export class MyApp {
     icon: "person"
   };
   perfil = { title: "Perfil Usuario", component: "LoginPage", icon: "person" };
-
+  taller = { title: "Participantes en el Taller", component: "ParticipantesTallerPage", icon: "book" };
+  nosotros = { title: "Nosotros", component: "NosotrosPage", icon: "people" };
   constructor(
     public platform: Platform,
     public statusBar: StatusBar,
@@ -72,7 +73,7 @@ export class MyApp {
         icon: "construct"
       },
       {
-        title: "Etiquetado Energético",
+        title: "Etiquetado  Energético",
         component: "EtiquetadoEnergeticoPage",
         icon: "flash"
       }
@@ -90,7 +91,7 @@ export class MyApp {
         icon: "school"
       },
       {
-        title: "Policia y Orden Público",
+        title: "Unidades Policiales",
         component: "PoliciaOrdenPublicoPage",
         icon: "body"
       },

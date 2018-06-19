@@ -1,3 +1,5 @@
+import { AuthProvider } from './../../providers/auth/auth';
+import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -14,12 +16,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'participantes-taller.html',
 })
 export class ParticipantesTallerPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  participantes: any;
+  admin = true;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private apiS:ApiProvider, private auth: AuthProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ParticipantesTallerPage');
+    this.admin = true;
+    this.participantes = this.apiS.getParticipantes();
+  }
+
+  eliminar(item){
+    this.apiS.eliminarParticipante(item);
   }
 
 }

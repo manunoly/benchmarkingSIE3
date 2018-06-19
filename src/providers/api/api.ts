@@ -29,4 +29,12 @@ export class ApiProvider {
     let inscripcion = this.afs.collection<any>('inscripcion');
     return inscripcion.add(usuario);
   }
+  getParticipantes(){
+    return this.afs.collection('inscripcion').valueChanges();
+  }
+
+  eliminarParticipante(p){
+    console.log(p);
+    // return this.afs.collection('inscripcion').doc(p.key).delete();
+  }
 }

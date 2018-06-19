@@ -1,15 +1,15 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget id="servi.transporte.manunoly" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ServiEcuadorTransporte</name>
-    <description>An awesome Ionic/Cordova app.</description>
+<?xml version='0.1' encoding='utf-8'?>
+<widget id="sie.ecuador.manunoly" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>SieEcuador</name>
+    <description>Evento Sie Ecuador.</description>
     <author email="manunoly@gmail.com" href="http://github.com/manunoly">Manuel Almaguer</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
+    <allow-intent href="tel:593987969776" />
+    <allow-intent href="sms:593987969776" />
+    <allow-intent href="mailto:manunoly@gmail.com" />
     <allow-intent href="geo:*" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="19" />
@@ -87,7 +87,7 @@
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Permisos de Localizacion" />
     </plugin>
     <plugin name="cordova-plugin-googleplus" spec="^5.3.0">
-        <variable name="REVERSED_CLIENT_ID" value="1:636867939821:ios:c3c064b33d9e0a26" />
+        <variable name="REVERSED_CLIENT_ID" value="375033599626-4qdvnmf04rn5sjl034dcs8htov695val.apps.googleusercontent.com" />
     </plugin>
     <plugin name="com-sarriaroman-photoviewer" spec="^1.1.16" />
     <engine name="browser" spec="~5.0.3" />

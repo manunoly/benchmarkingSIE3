@@ -51,6 +51,17 @@
           {{ p.title }}
         </button>
       </ion-item-group>
+      <ion-item-group>
+          <ion-item-divider color="light">Taller</ion-item-divider>
+          <button ion-item menuClose (click)="openPage(taller)">
+            <ion-icon item-start [name]="book" [color]="isActive(taller)"></ion-icon>
+            Participantes en el Taller
+          </button>
+          <button ion-item menuClose (click)="openPage(nosotros)">
+              <ion-icon item-start [name]="people" [color]="isActive(nosotros)"></ion-icon>
+              Nosotros
+            </button>
+      </ion-item-group>
     </ion-list>
   </ion-content>
 

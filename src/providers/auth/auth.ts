@@ -18,6 +18,7 @@ export class AuthProvider {
   authState: any = null;
   isCordova: boolean;
   user = new Subject<any>();
+  admin = false;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -47,6 +48,7 @@ export class AuthProvider {
                 this.authState["rol"] = userD.hasOwnProperty("rol")
                   ? userD["rol"]
                   : ["cliente"];
+                  console.log(userD);
                 this.user.next(this.authState);
               } else {
                 this.authState["displayName"] = auth["displayName"];
@@ -61,6 +63,7 @@ export class AuthProvider {
             .catch(error => this.handleError(error));
         } else {
           this.authState = null;
+          this.admin = false;
           this.user.next(this.authState);
         }
       },
@@ -167,7 +170,7 @@ export class AuthProvider {
     if (this.isCordova) {
       this.gplus
         .login({
-          webClientId: "AIzaSyDHcCO5ucIL6SLTmb5lgFx-MkZUj4U-jqI",
+          webClientId: "375033599626-4qdvnmf04rn5sjl034dcs8htov695val.apps.googleusercontent.com",
           offline: true,
           scopes: "profile email"
         })
@@ -193,6 +196,11 @@ export class AuthProvider {
   twitterLogin() {
     const provider = new firebase.auth.TwitterAuthProvider();
     return this.socialSignIn(provider);
+  }
+
+
+  get isAdmin(): boolean{
+    return this.authState['rol'][0] = "admin" ? true : false
   }
 
   private socialSignIn(provider) {

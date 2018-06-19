@@ -42,7 +42,7 @@
           </ion-item>
           <ion-item>
             <ion-label>Comentario</ion-label>
-            <ion-input formControlName="comentario"></ion-input>
+            <textarea formControlName="comentario"></textarea>
           </ion-item>
 
         </ion-list>
@@ -53,7 +53,7 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-        <button ion-button type="submit" [disabled]="!inscripcion.valid && !captchaPassed">Inscribir</button>
+        <button ion-button type="submit" [disabled]="!inscripcion.valid && captchaPassed">Inscribir</button>
       </form>
 
     </ion-card-content>
