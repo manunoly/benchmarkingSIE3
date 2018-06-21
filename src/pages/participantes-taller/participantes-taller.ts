@@ -17,12 +17,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ParticipantesTallerPage {
   participantes: any;
-  admin = true;
+  admin = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private apiS:ApiProvider, private auth: AuthProvider) {
   }
 
   ionViewDidLoad() {
-    this.admin = true;
+    this.admin = this.auth.isAdmin;
     this.participantes = this.apiS.getParticipantes();
   }
 

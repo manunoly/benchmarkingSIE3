@@ -40,6 +40,7 @@ export class AuthProvider {
             .then(userD => {
               this.authState = {};
               if (userD) {
+                if (userD['rol'][0]=="admin") this.admin = true
                 this.authState["uid"] = auth.uid;
                 this.authState["displayName"] = userD["displayName"];
                 this.authState["phoneNumber"] = userD["phoneNumber"];
@@ -48,7 +49,6 @@ export class AuthProvider {
                 this.authState["rol"] = userD.hasOwnProperty("rol")
                   ? userD["rol"]
                   : ["cliente"];
-                  console.log(userD);
                 this.user.next(this.authState);
               } else {
                 this.authState["displayName"] = auth["displayName"];
@@ -200,7 +200,7 @@ export class AuthProvider {
 
 
   get isAdmin(): boolean{
-    return this.authState['rol'][0] = "admin" ? true : false
+    return this.admin;
   }
 
   private socialSignIn(provider) {

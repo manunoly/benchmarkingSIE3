@@ -54,11 +54,11 @@
       <ion-item-group>
           <ion-item-divider color="light">Taller</ion-item-divider>
           <button ion-item menuClose (click)="openPage(taller)">
-            <ion-icon item-start [name]="book" [color]="isActive(taller)"></ion-icon>
+            <ion-icon item-start [name]="taller.icon" [color]="isActive(taller)"></ion-icon>
             Participantes en el Taller
           </button>
           <button ion-item menuClose (click)="openPage(nosotros)">
-              <ion-icon item-start [name]="people" [color]="isActive(nosotros)"></ion-icon>
+              <ion-icon item-start [name]="nosotros.icon" [color]="isActive(nosotros)"></ion-icon>
               Nosotros
             </button>
       </ion-item-group>
