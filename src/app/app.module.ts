@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
 // import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
-
 import { MyApp } from "./app.component";
 
 import { StatusBar } from "@ionic-native/status-bar";
@@ -14,11 +13,6 @@ import { AngularFireModule } from "angularfire2";
 import { AngularFirestoreModule } from "angularfire2/firestore";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { AuthProvider } from '../providers/auth/auth';
-
-import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
-import { ConexionProvider } from '../providers/conexion/conexion';
-import { Geolocation } from '@ionic-native/geolocation';
-import { Network } from "@ionic-native/network";
 
 import { GooglePlus } from "@ionic-native/google-plus";
 import { ApiProvider } from '../providers/api/api';
@@ -56,11 +50,7 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     AuthProvider,
-    BackgroundGeolocation,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    ConexionProvider,
-    Geolocation,
-    Network,
     GooglePlus,
     ApiProvider,
     PhotoViewer

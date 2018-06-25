@@ -4,13 +4,6 @@ import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 
 import { AuthProvider } from "../providers/auth/auth";
-import { Geolocation } from "@ionic-native/geolocation";
-
-import {
-  BackgroundGeolocation,
-  BackgroundGeolocationConfig,
-  BackgroundGeolocationResponse
-} from "@ionic-native/background-geolocation";
 
 @Component({
   templateUrl: "app.html"
@@ -19,14 +12,6 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = "InicioPage";
   showbutton = true;
-
-  backGeoConfig: BackgroundGeolocationConfig = {
-    desiredAccuracy: 10,
-    stationaryRadius: 20,
-    distanceFilter: 30,
-    debug: true, //  enable this hear sounds for background-geolocation life-cycle.
-    stopOnTerminate: false // enable this to clear background location settings when the app terminates
-  };
 
   paginaGeneral: Array<{ title: string; component: any; icon: any }>;
   paginaTipologia: Array<{ title: string; component: any; icon: any }>;
@@ -46,7 +31,6 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    private backgroundGeolocation: BackgroundGeolocation,
     private auth: AuthProvider
   ) {
     this.initializeApp();
@@ -119,7 +103,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.backGroundGeolocation();
       this.iniciarConfiguracion();
     });
   }
@@ -170,21 +153,6 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
 
-  backGroundGeolocation() {
-    this.backgroundGeolocation.configure(this.backGeoConfig).subscribe(
-      (location: BackgroundGeolocationResponse) => {
-        console.log(location);
-
-        // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
-        // and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
-        // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
-        this.backgroundGeolocation.finish(); // FOR IOS ONLY
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
   isActive(page) {
     // if (this.nav.getActive()) console.log(this.nav.getActive());
 
