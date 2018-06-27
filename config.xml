@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='0.1' encoding='utf-8'?>
 <widget id="sie.ecuador.manunoly" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>SieEcuador</name>
+    <name>SieEcuador by manunoly</name>
     <description>Evento Sie Ecuador.</description>
     <author email="manunoly@gmail.com" href="http://github.com/manunoly">Manuel Almaguer</author>
     <content src="index.html" />

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
-import { AuthProvider } from "./../../providers/auth/auth";
+import { ApiProvider } from "./../../providers/api/api";
 
 /**
  * Generated class for the InicioPage page.
@@ -16,14 +16,15 @@ import { AuthProvider } from "./../../providers/auth/auth";
 })
 export class InicioPage {
   user: any;
+  ancho = false;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private auth: AuthProvider
+    private api: ApiProvider
   ) {}
 
   ionViewDidLoad() {
-    this.user = this.auth.currentUserObservable;
+    this.ancho = this.api.ancho;
   }
 
   goToTaller(){
