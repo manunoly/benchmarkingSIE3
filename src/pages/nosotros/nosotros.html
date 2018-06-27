@@ -10,12 +10,17 @@
     <a hidden href="mailto:manunoly@gmail.com" target="_top"> Contacto </a>
   </ion-fab>
   <ion-card offset-md-2 col-md-8 text-justify>
-    <img src="assets/imgs/logos.png" />
+    <div *ngIf="ancho">
+      <img src="assets/imgs/Web_Logos_800x600.png">
+    </div>
+    <div *ngIf="!ancho">
+      <img src="assets/imgs/Movil_Logos_400x400.png">
+    </div>
     <ion-card-content>
       <ion-card-title text-center>
         Nosotros
       </ion-card-title>
-      <ul>
+      <ul no-padding>
         <li>
           El proyecto SIE3 es financiado por la Agencia Española de Cooperación Internacional para el Desarrollo (AECID)
         </li>
@@ -38,9 +43,9 @@
         <ion-col>La empresa privada española Inergy. Desarrolladora del software SIE3</ion-col>
       </ion-row> -->
     </ion-card-content>
-    <ion-card-content hidden>
+    <ion-card-content hidden no-padding>
       <ul>
-        Desarrollo Web y Movil por Ing. Manuel Almaguer
+        Desarrollor Ing. Manuel Almaguer
         <a href="mailto:manunoly@gmail.com" target="_top"> Contacto </a>
       </ul>
       <ul>

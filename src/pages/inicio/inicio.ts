@@ -30,6 +30,7 @@ export class InicioPage {
   goToTaller(){
     this.navCtrl.push("TallerBuenasPracticasPage");
   }
+
   goToHerramienta(){
     this.navCtrl.push("EtiquetadoEnergeticoPage");
   }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
+import { ApiProvider } from '../../providers/api/api';
 
 /**
  * Generated class for the NosotrosPage page.
@@ -14,12 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'nosotros.html',
 })
 export class NosotrosPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+ancho = false;
+  constructor(private api: ApiProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NosotrosPage');
+    this.ancho = this.api.ancho;
   }
 
 }
