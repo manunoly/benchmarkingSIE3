@@ -1,6 +1,6 @@
-<ion-header>
+<ion-header no-border>
 
-  <ion-navbar>
+  <ion-navbar transparent>
     <ion-title text-center>Taller de Buenas Prácticas</ion-title>
   </ion-navbar>
 
@@ -53,7 +53,7 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-        <button ion-button type="submit" [disabled]="!inscripcion.valid && captchaPassed">Inscribir</button>
+        <button ion-button type="submit" [disabled]="!inscripcion.valid || !captchaPassed">Inscribir</button>
       </form>
 
     </ion-card-content>

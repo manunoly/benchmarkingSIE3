@@ -57,7 +57,7 @@ export class MyApp {
         icon: "construct"
       },
       {
-        title: "Etiquetado  Energético",
+        title: "Etiquetado Energético",
         component: "EtiquetadoEnergeticoPage",
         icon: "flash"
       }
