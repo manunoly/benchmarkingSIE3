@@ -13,6 +13,11 @@ de la convocatoria de proyectos de innovación. El proyecto es coordinado por el
 de investigación español), siendo la contraparte ecuatoriana el INER, y cuenta con el apoyo de la empresa privada
 española Inergy.
 
-## La presente Herramienta muestra los resultados obtenidos del trabajo realizado por el equipo de edificaciones del INER 
-de conjunto con sus aliados de españa Inergy y CIMNE.
-#Desarrollo móvil y web por Manuel Almaguer(Ing. Sistemas y AT del INER)
+## La presente Herramienta muestra los resultados obtenidos del trabajo realizado por el equipo de edificaciones del INER de conjunto con sus aliados de españa Inergy y CIMNE.
+### Desarrollo móvil y web por Manuel Almaguer (Ing. Sistemas y AT del INER)
+{
+"manunoly": "Manuel Almaguer",
+"titulo": "Ing. Sistemas",
+"cargo": "AT del INER"
+"correo": "manunoly@gmail.com"
+}
